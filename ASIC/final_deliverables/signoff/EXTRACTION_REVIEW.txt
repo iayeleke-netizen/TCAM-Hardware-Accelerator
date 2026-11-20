@@ -1,0 +1,56 @@
+TCAM ASIC Extraction Warning Review
+==================================
+
+Design: tcam_registered
+Technology: SKY130
+Implementation: TCAM_SLEW_REPAIR_04
+
+WARNING 1: Missing decap device terminals
+
+Affected cell:
+sky130_fd_sc_hd__decap_3
+
+Number of warnings: 2
+
+Verification:
+External pins: PASS
+Device count: PASS
+Transistor types: PASS
+Transistor connectivity: PASS
+Numerical W/L comparison: MATCH
+Netgen LVS: PASS
+
+Disposition:
+Extracted device connectivity matches the
+original PDK reference.
+
+No connectivity defect was identified.
+
+Simulation scaling must be verified separately
+before transistor-level simulation.
+
+WARNING 2: Top-level boundary redefinition
+
+DEF boundary:
+(0.0, 0.0, 112.44, 123.16) um
+
+Magic GDS boundary:
+(0.0, 0.0, 112.44, 123.16) um
+
+KLayout GDS boundary:
+(0.0, 0.0, 112.44, 123.16) um
+
+Boundary layer: 235/4
+Boundary coordinate differences: 0
+
+Disposition:
+No boundary dimensional discrepancy identified.
+
+Supporting physical verification:
+Magic DRC: PASS
+KLayout DRC: PASS
+GDS XOR: PASS
+Netgen LVS: PASS
+
+Engineering extraction review: COMPLETE
+Manufacturing approval: NOT OBTAINED

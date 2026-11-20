@@ -1,4 +1,4 @@
-# Low-Latency FPGA-Based TCAM Hardware Accelerator
+# Low-Latency TCAM Hardware Accelerator — FPGA to ASIC
 
 ## Project Overview
 
@@ -8,7 +8,7 @@ The accelerator performs simultaneous masked comparisons across four configurabl
 
 The design explores hardware acceleration techniques applicable to network packet classification, low-latency trading infrastructure, and high-speed data filtering.
 
-The project includes RTL development, functional verification, randomized testing, FPGA synthesis, implementation, static timing analysis, clock domain crossing analysis, and physical hardware verification.
+The project covers RTL development, randomized verification, FPGA implementation and hardware testing, followed by SKY130 ASIC physical implementation, multi-corner timing and power analysis, formal equivalence, and physical verification.
 
 ## Key Features
 
@@ -211,23 +211,30 @@ The board interface demonstrates functional operation. The core's high-speed lat
 
 ```text
 TCAM-Hardware-Accelerator/
-├── rtl/
-├── tb/
-├── constraints/
-├── reports/
-├── simulation/
-├── hardware/
-├── diagrams/
-├── bitstream/
+├── RTL/
+├── TB/
+├── CONSTRAINTS/
+├── REPORTS/
+├── SIMULATION/
+├── DIAGRAMS/
+├── BITSTREAM/
+├── ASIC/
+│   ├── rtl/
+│   ├── tb/
+│   ├── constraints/
+│   ├── netlist/
+│   ├── signoff/
+│   └── final_deliverables/
+├── .gitignore
 └── README.md
 ```
 
 ## Reproducing the FPGA Implementation
 
 1. Create a new Vivado RTL project targeting xc7a35tcpg236-1.
-2. Import the SystemVerilog files from the rtl directory.
-3. Import the testbenches from the tb directory.
-4. Import both XDC files from the constraints directory.
+2. Import the SystemVerilog files from the RTL directory.
+3. Import the testbenches from the TB directory.
+4. Import both XDC files from the CONSTRAINTS directory.
 5. Set tcam_fpga_top as the synthesis top module.
 6. Run synthesis and implementation.
 7. Generate the bitstream.
@@ -249,27 +256,109 @@ A prebuilt bitstream is also provided for the compatible Basys 3 device.
 - FPGA Synthesis and Implementation
 - Hardware Debugging
 
+## ASIC Implementation — SKY130
+
+The TCAM accelerator was also implemented as a standard-cell ASIC using
+the open-source SKY130 technology and an OpenROAD-based physical design flow.
+
+The ASIC implementation includes logic synthesis, placement, clock-tree
+synthesis, routing, parasitic extraction, multi-corner static timing analysis,
+power estimation, physical verification, and formal equivalence checking.
+
+### ASIC Design Specifications
+
+| Parameter | Result |
+|---|---|
+| Top module | tcam_registered |
+| Technology | SKY130 |
+| Target frequency | 100 MHz |
+| Clock period | 10 ns |
+| Nominal supply | 1.80 V |
+| Die dimensions | 112.44 × 123.16 µm |
+| Die area | 0.013848 mm² |
+| Physical instances | 1,921 |
+| Flip-flops | 85 |
+
+### ASIC Timing and Power Results
+
+| Metric | Result |
+|---|---:|
+| Worst setup slack | +4.5496 ns |
+| Worst hold slack | +0.1033 ns |
+| Timing corners analyzed | 9 |
+| Nominal estimated power | 831.3147 µW |
+| Minimum estimated power | 651.7134 µW |
+| Maximum estimated power | 974.3918 µW |
+| Worst combined IR-drop bound | 1.242 mV |
+
+All nine analyzed timing corners reported positive setup and hold slack.
+
+Power values are estimates rather than silicon measurements.
+The IR-drop analysis is preliminary and does not include package effects.
+
+### ASIC Verification
+
+| Verification | Result |
+|---|---|
+| RTL-to-synthesis equivalence | PASS |
+| Synthesis-to-final equivalence | PASS |
+| RTL-to-final equivalence | PASS |
+| Reset-aware formal equivalence | PASS |
+| Magic DRC | 0 reported violations |
+| KLayout DRC | 0 reported violations |
+| GDS XOR comparison | 0 reported differences |
+| Netgen LVS | PASS |
+| Antenna checks | 0 reported violations |
+
+Formal verification used ABC PDR.
+
+### Engineering Exceptions and Limitations
+
+One root clock-net fanout violation remains against the global
+fanout limit of 10. The actual fanout is 16 clock-buffer sinks.
+Electrical loading and transition checks were reviewed, and an
+engineering exception was documented. Manufacturing waiver approval
+has not been obtained.
+
+Extraction warnings were reviewed, but transistor-level simulation
+scaling requires separate verification.
+
+This project is an engineering-verified portfolio implementation,
+not a foundry-approved manufacturing or tapeout release.
+
+### Final ASIC Deliverables
+
+The `ASIC/final_deliverables/` directory contains:
+
+- Magic and KLayout GDS layouts
+- Final DEF and OpenDB design database
+- Gate-level Verilog netlist
+- Nine-corner timing and power reports
+- IR-drop and physical verification reports
+- Formal verification evidence
+- Engineering signoff documentation
+- Final manifest and SHA-256 checksums
+
+See `ASIC/final_deliverables/MANIFEST.txt` for details.
+
 ## Future Development
 
-The next phase of this project will focus on converting the TCAM accelerator into a standard-cell ASIC implementation.
+Potential future work includes:
 
-Planned developments include:
-
-- ASIC-compatible RTL adaptation
-- Logic synthesis using Yosys
-- Physical design using OpenROAD
-- Standard-cell placement and routing
-- ASIC static timing analysis
-- Power, performance, and area evaluation
-- Design rule checking and layout verification
-- FPGA-to-ASIC performance comparison
-- Potential fabrication through a multi-project wafer program
+- Resolving the remaining clock fanout exception
+- Completing foundry-specific manufacturing signoff
+- Additional transistor-level simulation
+- Evaluating larger TCAM configurations
+- Exploring integration into a RISC-V-based accelerator system
 
 ## Project Status
 
-FPGA implementation and functional hardware verification: Complete.
+FPGA implementation and hardware verification: Complete.
 
-ASIC implementation: Planned.
+ASIC physical implementation and documented engineering verification:
+Complete, with open engineering exceptions.
+
+Manufacturing/tapeout signoff: Not complete.
 
 ## Author
 

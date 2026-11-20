@@ -1,0 +1,28 @@
+TCAM Reset-Aware Formal Verification
+====================================
+
+Design: tcam_registered
+Technology: SKY130
+
+Golden: Original RTL
+Gate: Final ASIC functional netlist
+
+Verification engine: ABC PDR
+Initial reset: Required
+Subsequent inputs: Unrestricted
+
+Properties:
+result_valid equivalence: PASS
+match_vector equivalence: PASS
+match_found equivalence: PASS
+match_index equivalence: PASS
+
+Counterexamples: 0
+Overall result: PASS
+
+Scope:
+Formal output equivalence following initial
+synchronous reset.
+
+Physical timing and analog behavior are not
+covered by this proof.

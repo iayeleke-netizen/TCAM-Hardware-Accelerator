@@ -1,0 +1,47 @@
+TCAM HARDWARE ACCELERATOR
+FINAL ASIC IR-DROP ANALYSIS
+==========================================
+
+Technology: SKY130 130nm
+Design: tcam_registered
+Implementation: TCAM_SLEW_REPAIR_04
+Clock frequency: 100 MHz
+Nominal supply voltage: 1.8 V
+Analysis corner: nom_tt_025C_1v80
+
+POWER CONSUMPTION
+------------------------------------------
+Nominal power: 831.3147 uW
+
+VPWR NETWORK
+------------------------------------------
+Connectivity: PASS
+Average voltage drop: 0.185 mV
+Worst-case voltage drop: 0.679 mV
+
+VGND NETWORK
+------------------------------------------
+Connectivity: PASS
+Average voltage rise: 0.168 mV
+Worst-case voltage rise: 0.563 mV
+
+COMBINED RESULTS
+------------------------------------------
+Worst-case combined bound: 1.242 mV
+Effective supply voltage bound: 1.798758 V
+Supply voltage reduction bound: 0.069%
+
+Previous combined bound: 1.234 mV
+Increase after repair: 0.008 mV
+
+RESULT
+------------------------------------------
+Preliminary static IR-drop analysis: PASS
+
+LIMITATIONS
+------------------------------------------
+Power consumption is estimated.
+Workload-specific activity is not verified.
+Actual package supply locations are not modeled.
+Combined voltage drop is a conservative bound.
+This is not final manufacturing signoff.

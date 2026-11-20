@@ -1,0 +1,24 @@
+[options]
+mode prove
+depth 20
+timeout 300
+
+[engines]
+abc pdr
+
+[script]
+read_rtlil golden_rtl.il
+rename tcam_registered gold
+
+read_rtlil final_gate_clean.il
+rename tcam_registered gate
+
+read_verilog -formal reset_formal.v
+
+hierarchy -check -top reset_formal
+prep -top reset_formal
+
+[files]
+/home/femi/ASIC_Projects/TCAM-Hardware-Accelerator/ASIC/eco/TCAM_SLEW_REPAIR_04/18_equivalence/golden_rtl.il
+/home/femi/ASIC_Projects/TCAM-Hardware-Accelerator/ASIC/eco/TCAM_SLEW_REPAIR_04/18_equivalence/final_gate_clean.il
+/home/femi/ASIC_Projects/TCAM-Hardware-Accelerator/ASIC/eco/TCAM_SLEW_REPAIR_04/19_reset_verification/reset_formal.v

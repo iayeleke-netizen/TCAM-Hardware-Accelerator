@@ -1,0 +1,98 @@
+TCAM HARDWARE ACCELERATOR
+FINAL ASIC ENGINEERING SIGNOFF REPORT
+=====================================
+
+Design: tcam_registered
+Technology: SKY130 130nm
+Implementation: TCAM_SLEW_REPAIR_04
+Target frequency: 100 MHz
+Clock period: 10 ns
+Nominal supply: 1.80 V
+
+1. FUNCTIONAL VERIFICATION
+-------------------------------------
+RTL-to-synthesis equivalence: PASS
+Synthesis-to-final equivalence: PASS
+RTL-to-final equivalence: PASS
+Reset-aware RTL-to-final equivalence: PASS
+Formal engine: ABC PDR
+Reset-aware counterexamples: 0
+
+2. STATIC TIMING ANALYSIS
+-------------------------------------
+Corners analyzed: 9/9
+Worst setup slack: +4.5496 ns
+Worst hold slack: +0.1033 ns
+Setup violations: 0
+Hold violations: 0
+Slew violations: 0
+Capacitance violations: 0
+
+3. POWER ANALYSIS
+-------------------------------------
+Nominal power: 831.3147 uW
+Internal power: 635.4791 uW
+Switching power: 195.8299 uW
+Leakage power: 0.005676 uW
+
+Minimum estimated power: 651.7134 uW
+Maximum estimated power: 974.3918 uW
+Corners analyzed: 9/9
+
+4. POWER INTEGRITY
+-------------------------------------
+VPWR connectivity: PASS
+VGND connectivity: PASS
+Worst VPWR drop: 0.679 mV
+Worst VGND rise: 0.563 mV
+Combined conservative bound: 1.242 mV
+Preliminary static IR-drop analysis: PASS
+
+5. PHYSICAL VERIFICATION
+-------------------------------------
+Total physical instances: 1921
+Total nets: 523
+KLayout DRC: 0 reported violations
+Magic DRC: 0 reported violations
+GDS comparison/XOR: 0 reported differences
+Netgen LVS: PASS
+Antenna net violations: 0
+Antenna pin violations: 0
+
+6. ENGINEERING EXCEPTIONS
+-------------------------------------
+CLK_FANOUT_001:
+One root clock-net fanout violation remains
+against the global fanout limit of 10.
+The clock driver has 16 clock-buffer sinks.
+This is documented as an engineering waiver,
+not an approved manufacturing exception.
+
+EXTRACTION_REVIEW:
+Previously documented extraction warnings
+and GDS boundary warnings were reviewed.
+See ASIC/signoff/EXTRACTION_REVIEW.txt.
+
+7. LIMITATIONS
+-------------------------------------
+Power is estimated, not measured.
+Workload-specific switching is not verified.
+IR-drop analysis is preliminary.
+Package supply locations are not modeled.
+Formal proof does not cover analog behavior.
+Foundry-specific signoff has not been obtained.
+Tapeout integration remains outstanding.
+
+8. ENGINEERING DISPOSITION
+-------------------------------------
+Completed verification checks:
+PASS as documented above.
+
+Open engineering exceptions:
+See CLK_FANOUT_001 and EXTRACTION_REVIEW.
+
+Manufacturing/tapeout signoff:
+NOT COMPLETE.
+
+This report summarizes engineering results.
+It does not authorize fabrication.

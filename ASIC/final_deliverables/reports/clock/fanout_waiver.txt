@@ -1,0 +1,49 @@
+TCAM ASIC - Clock Fanout Engineering Waiver
+
+Technology: SKY130
+Design: tcam_registered
+Implementation: TCAM_SLEW_REPAIR_04
+Target frequency: 100 MHz
+
+Waiver ID: CLK_FANOUT_001
+Net: clknet_0_clk
+Driver: clkbuf_0_clk/X
+Cell: sky130_fd_sc_hd__clkbuf_16
+
+Original design fanout limit: 10
+Actual clock fanout: 16
+Maximum proposed waived fanout: 16
+
+Justification:
+The root clock buffer drives 16 downstream clock buffers.
+No explicit maximum fanout restriction was found in the
+inspected Liberty models for this cell.
+
+Maximum-RC slow-corner reported values:
+Output capacitance: 0.102996 pF
+Liberty capacitance limit: 1.017161 pF
+Output transition: 0.181193 ns
+Liberty transition limit: 1.502104 ns
+
+Nine-corner STA results:
+Setup violations: 0
+Hold violations: 0
+Slew violations: 0
+Capacitance violations: 0
+Raw fanout violations: 1 per corner
+
+Independent physical connectivity inspection:
+Signal nets checked: 521
+Candidate clock exceptions: 1
+Other fanout violations: 0
+
+Scope:
+This waiver applies only to clknet_0_clk driven by
+clkbuf_0_clk/X in the current physical implementation.
+
+The original design-wide fanout constraint remains unchanged.
+
+Status:
+Proposed engineering waiver pending final verification.
+Revalidate if clock topology, loading, constraints,
+technology or physical implementation changes.

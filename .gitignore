@@ -1,0 +1,22 @@
+# ASIC generated implementation data
+/ASIC/config/
+/ASIC/eco/
+/ASIC/layout/
+/ASIC/obj_*/
+/ASIC/parasitics/
+/ASIC/reports/
+
+# Temporary files
+*.tmp
+*.swp
+*~
+__pycache__/
+*.pyc
+
+# Local simulation artifacts
+*.vcd
+*.fst
+*.vvp
+
+# Local README backup
+README.md.pre_asic_update

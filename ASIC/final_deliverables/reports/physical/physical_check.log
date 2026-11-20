@@ -1,0 +1,17 @@
+OpenROAD dcf36133a369abc8f3c5e5738cd4d82e4903c0e0 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+===== FINAL DESIGN INVENTORY =====
+Total instances: 1921
+Total nets: 523
+===== PLACEMENT VERIFICATION =====
+===== ROUTING VERIFICATION =====
+Design routed: 1
+===== VPWR CONNECTIVITY =====
+[INFO PSM-0040] All shapes on net VPWR are connected.
+VPWR result: 1
+===== VGND CONNECTIVITY =====
+[INFO PSM-0040] All shapes on net VGND are connected.
+VGND result: 1
+===== PHYSICAL VERIFICATION COMPLETE =====

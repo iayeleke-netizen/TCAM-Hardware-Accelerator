@@ -1,0 +1,89 @@
+TCAM HARDWARE ACCELERATOR
+FINAL ASIC ENGINEERING DELIVERABLES
+=================================
+
+Design: tcam_registered
+Technology: SKY130 130nm
+Implementation: TCAM_SLEW_REPAIR_04
+Target clock: 100 MHz
+Clock period: 10 ns
+Nominal voltage: 1.80 V
+
+1. PHYSICAL DESIGN
+------------------
+layout/tcam_registered.gds
+layout/tcam_registered.klayout.gds
+layout/tcam_registered.def
+layout/tcam_registered.odb
+netlist/tcam_registered.nl.v
+
+Die dimensions: 112.44 x 123.16 um
+Die area: 0.013848 mm^2
+Physical instances: 1921
+Flip-flops: 85
+
+2. VERIFICATION REPORTS
+-----------------------
+reports/timing/
+reports/power/
+reports/ir_drop/
+reports/physical/
+reports/clock/
+
+3. FORMAL VERIFICATION
+----------------------
+formal/
+
+Reset-aware formal proof: PASS
+RTL-to-final equivalence: PASS
+Formal engine: ABC PDR
+
+4. ENGINEERING SIGNOFF
+----------------------
+signoff/FINAL_ASIC_SIGNOFF.txt
+signoff/CLK_FANOUT_001.txt
+signoff/EXTRACTION_REVIEW.txt
+
+5. FINAL RESULTS
+----------------
+Worst setup slack: +4.5496 ns
+Worst hold slack: +0.1033 ns
+Nominal estimated power: 831.3147 uW
+Worst-case combined IR-drop bound: 1.242 mV
+
+KLayout DRC: 0 reported violations
+Magic DRC: 0 reported violations
+GDS XOR: 0 reported differences
+Netgen LVS: PASS
+
+6. ENGINEERING EXCEPTIONS
+-------------------------
+One clock fanout violation remains:
+Actual fanout: 16
+Global constraint: 10
+
+Engineering waiver documented.
+Manufacturing waiver approval NOT obtained.
+
+Extraction warnings reviewed.
+Transistor-level simulation scaling requires
+separate verification.
+
+7. RELEASE LIMITATIONS
+----------------------
+This is an engineering-verified portfolio release,
+not a foundry-approved manufacturing release.
+
+Power results are estimated, not measured.
+IR-drop analysis is preliminary.
+Package effects are not modeled.
+Foundry-specific signoff remains outstanding.
+
+8. INTEGRITY
+------------
+SHA256SUMS contains checksums for the original
+39 packaged files.
+
+MANIFEST.txt was created after the initial
+checksum generation and must be added to
+the checksum file separately.
